@@ -21,17 +21,26 @@
                             <tr align="center">
                                 <th>ID</th>
                                 <th>Tên</th>
+                                <th>Email</th>
+                                <th>Quyền</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($theloai as $tl)
+                            @foreach($user as $user)
                             <tr class="odd gradeX" align="center">
-                                <td>{{$tl->id}}</td>
-                                <td>{{$tl->Ten}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/theloai/xoa/{{$tl->id}}"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/user/sua/{{$tl->id}}">Edit</a></td>
+                                <td>{{$user->id}}</td>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->email}}</td>
+                                <td>@if($user->quyen==1)
+                                {{"Admin"}}
+                                @else
+                                {{"User"}}
+                                @endif
+                                </td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/user/xoa/{{$user->id}}"> Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/user/sua/{{$user->id}}">Edit</a></td>
                             </tr>
                             @endforeach
                         </tbody>
